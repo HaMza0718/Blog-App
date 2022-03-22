@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { signOut } from "firebase/auth";
+import { useState } from "react";
+import { BrowserRouter as Router , Routes , Route , Link } from "react-router-dom";
+import Home from "./Home";
+import Login from "./Login";
+import Post from "./Post";
+import {auth} from "./firebase";
 
 function App() {
+  const[Auth , setAuth] = useState(localStorage.getItem("Auth"));
+
+  const logOut = ()=> {
+    signOut(auth).then (()=>{
+      localStorage.clear();
+      setAuth(false);
+      window.location.pathname = "/login"
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <nav>
+      <Link to="/"> Home </Link>
+     {!Auth ? (<Link to="/login"> Login </Link> ) : (
+       <>
+       <Link to="/post"> Add Post </Link>
+       <button className="logOut" onClick={logOut}>Log Out</button>
+       </>
+       )}
+    </nav>
+      <Routes>
+        <Route path="/" element={<Home Auth={Auth} />} />
+        <Route path="/post" element={<Post Auth={Auth}/>} />
+        <Route path="/login" element={<Login setAuth={setAuth} />} />
+      </Routes>
+    </Router>
   );
 }
 
