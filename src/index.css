@@ -176,7 +176,7 @@ a:hover{
 .deletePost button:hover{
     font-size: 22px;
 }
-/**********RESPONSIVE***********/
+/**********Media Queries***********/
 @media (max-width: 565px) {
     nav{
         display: flex;
@@ -193,8 +193,11 @@ a:hover{
         width: 450px;
         overflow: hidden;
       }
+      .postContainer{
+        width: 450px;
+    }
 }
-@media (max-width: 426px) {
+@media (max-width: 435px) {
     nav{
         display: flex;
         justify-content: space-evenly;
@@ -206,8 +209,11 @@ a:hover{
       width: 330px;
       overflow: hidden;
     }
+    .postContainer{
+        width: 350px;
+    }
 }
-@media (max-width: 375px) {
+@media (max-width: 395px) {
     nav{
         display: flex;
         justify-content: space-evenly;
@@ -226,12 +232,13 @@ a:hover{
     .loginPage p{
         font-size: 18px;
         padding: 5px;
+        
     }
     .loginPage button{
         font-size: 15px;
     }
     .postContainer{
-        width: auto;
+        width: 300px;
     }
     .postContainer h1{
         font-size: 30px;
