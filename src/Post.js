@@ -17,11 +17,11 @@ function Post({ Auth }) {
     });
     navigate("/");
   };
-  useEffect(()=> {
-    if (!Auth){
+  useEffect(() => {
+    if (!Auth) {
       navigate("/login");
     }
-  }, [])
+  }, [Auth, navigate]);
 
   return (
     <div className="postPage">
