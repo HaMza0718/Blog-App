@@ -26,7 +26,7 @@ function Home({Auth}) {
               <h3>{post.title}</h3>
             </div>
             <div className="deletePost">
-            {Auth && post.author.id == auth.currentUser.uid && (
+            {Auth && post.author.id === auth.currentUser.uid && (
               <button onClick={()=>{
                 deletePost(post.id)
                 }}>
